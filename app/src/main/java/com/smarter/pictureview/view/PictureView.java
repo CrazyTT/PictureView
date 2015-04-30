@@ -187,14 +187,15 @@ public class PictureView extends ImageView implements ViewTreeObserver.OnGlobalL
     public float getScale(){
         float[] values = new float[9];
         mScaleMatrix.getValues(values);
-
         return values[Matrix.MSCALE_X];
     }
 
     //缩放的区间mInitScale - mMaxScale
     @Override
     public boolean onScale(ScaleGestureDetector scaleGestureDetector) {
+        //获得当前图片的缩放值
         float scale = getScale();
+        //获得手指的缩放值
         float scaleFactor = scaleGestureDetector.getScaleFactor();
 
         if (getDrawable() == null)
@@ -276,7 +277,7 @@ public class PictureView extends ImageView implements ViewTreeObserver.OnGlobalL
 
         if (mGestureDetector.onTouchEvent(motionEvent))
             return true;
-
+        //将触摸事件传递给OnScaleGestureListener
         mScaleGestureDetector.onTouchEvent(motionEvent);
         float x = 0;
         float y = 0;
@@ -388,7 +389,7 @@ public class PictureView extends ImageView implements ViewTreeObserver.OnGlobalL
     }
 
     /**
-     * 获得图片缩放以后的宽和高，以及l，r，t，b
+     * 获得图片缩放以后的宽和高，以及left，right，top，bottom
      * @return
      */
     private RectF getMatrixRectF() {
