@@ -112,6 +112,7 @@ public class PictureView extends ImageView implements ViewTreeObserver.OnGlobalL
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
+        //注册OnGlobalLayoutListener
         getViewTreeObserver().addOnGlobalLayoutListener(this);
     }
 
@@ -121,6 +122,7 @@ public class PictureView extends ImageView implements ViewTreeObserver.OnGlobalL
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
+        //移除OnGlobalLayoutListener
         getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
 
